@@ -35,7 +35,7 @@
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
     <!-- CSS stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.1">
 
     <!-- JS logic -->
     <script src="app.js" defer></script>
@@ -769,100 +769,381 @@
 
                 <div class="reveal">
                     <div class="form-card">
+                        <!-- Luxury Top Gradient Accent Line -->
+                        <div class="form-card-glow-bar"></div>
+
                         <div class="form-card-header">
                             <div class="form-badge">
                                 <span class="badge-dot"></span>
-                                <span>Availability & Pricing</span>
+                                <span>Live Availability · 2026 Season</span>
                             </div>
                             <h3>Book Your Consultation</h3>
                             <p class="form-sub">
-                                Tell us about your celebration and we'll check availability for your date.
+                                Tell us about your celebration · Custom pricing quote in 60 seconds
                             </p>
                         </div>
 
-                        <form id="bookingForm">
-                            <div class="form-grid">
-                                <div class="booking-field">
-                                    <label for="bookingName">Full Name <span class="req">*</span></label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="bookingName" name="name" maxlength="100"
-                                            autocomplete="name" placeholder="Your full name" required>
-                                    </div>
+                        <form id="bookingForm" novalidate>
+                            <!-- Calendly-Style Step Progress Header -->
+                            <div class="steps-progress-container">
+                                <div class="steps-progress-bar">
+                                    <div class="steps-progress-fill" id="stepsProgressFill" style="width: 33%;"></div>
                                 </div>
-
-                                <div class="booking-field">
-                                    <label for="bookingPhone">Phone Number <span class="req">*</span></label>
-                                    <div class="input-wrapper">
-                                        <input type="tel" id="bookingPhone" name="phone" maxlength="25"
-                                            autocomplete="tel" pattern="[0-9+() -]{7,25}" placeholder="+91 98407 67566"
-                                            required>
-                                    </div>
-                                </div>
-
-                                <div class="booking-field">
-                                    <label for="bookingEmail">Email Address <span class="req">*</span></label>
-                                    <div class="input-wrapper">
-                                        <input type="email" id="bookingEmail" name="email" maxlength="150"
-                                            autocomplete="email" placeholder="name@example.com" required>
-                                    </div>
-                                </div>
-
-                                <div class="booking-field">
-                                    <label for="bookingService">Service Interested In <span class="req">*</span></label>
-                                    <div class="input-wrapper select-wrapper">
-                                        <select id="bookingService" name="service" required>
-                                            <option value="">Select a service</option>
-                                            <option value="Candid Wedding Photography">Candid Wedding Photography
-                                            </option>
-                                            <option value="Pre-Wedding Photoshoot">Pre-Wedding Photoshoot</option>
-                                            <option value="Wedding Cinematography">Wedding Cinematography</option>
-                                            <option value="Destination Wedding">Destination Wedding</option>
-                                            <option value="Other">Other Custom Package</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="booking-field">
-                                    <label for="weddingDate">Wedding / Event Date</label>
-                                    <div class="input-wrapper">
-                                        <input type="date" id="weddingDate" name="weddingDate">
-                                    </div>
-                                </div>
-
-                                <div class="booking-field">
-                                    <label for="weddingLocation">Location / Venue</label>
-                                    <div class="input-wrapper">
-                                        <input type="text" id="weddingLocation" name="location" maxlength="150"
-                                            placeholder="City or venue name">
-                                    </div>
-                                </div>
-
-                                <div class="booking-field field-full">
-                                    <label for="bookingMessage">Tell Us About Your Vision</label>
-                                    <div class="input-wrapper">
-                                        <textarea id="bookingMessage" name="message" rows="3" maxlength="1000"
-                                            placeholder="Events flow, guest count, ceremonies, or questions..."></textarea>
-                                    </div>
+                                <div class="steps-indicator">
+                                    <button type="button" class="step-indicator-item active" data-step-target="1">
+                                        <span class="step-num">
+                                            <span class="num-text">1</span>
+                                            <svg class="check-icon" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </span>
+                                        <span class="step-text">Service & Date</span>
+                                    </button>
+                                    <span class="step-connector"></span>
+                                    <button type="button" class="step-indicator-item" data-step-target="2">
+                                        <span class="step-num">
+                                            <span class="num-text">2</span>
+                                            <svg class="check-icon" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </span>
+                                        <span class="step-text">Venue</span>
+                                    </button>
+                                    <span class="step-connector"></span>
+                                    <button type="button" class="step-indicator-item" data-step-target="3">
+                                        <span class="step-num">
+                                            <span class="num-text">3</span>
+                                            <svg class="check-icon" width="12" height="12" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="3"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                        </span>
+                                        <span class="step-text">Your Details</span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Simple honeypot field to deter basic bots -->
-                            <div class="booking-honeypot" aria-hidden="true">
-                                <label for="websiteField">Website</label>
-                                <input type="text" id="websiteField" name="website" tabindex="-1" autocomplete="off">
+                            <!-- STEP 1: SERVICE, DATE & TIME -->
+                            <div class="form-step active" data-step="1">
+                                <div class="step-header">
+                                    <span class="step-eyebrow">Step 1 of 3</span>
+                                    <h4>What type of celebration & date?</h4>
+                                </div>
+
+                                <div class="step-fields">
+                                    <div class="booking-field field-full">
+                                        <label for="bookingService">Service Interested In <span
+                                                class="req">*</span></label>
+                                        <div class="input-wrapper select-wrapper has-icon">
+                                            <span class="input-icon">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path
+                                                        d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                                    </path>
+                                                    <circle cx="12" cy="13" r="4"></circle>
+                                                </svg>
+                                            </span>
+                                            <select id="bookingService" name="service" required>
+                                                <option value="">Select a service package...</option>
+                                                <option value="Candid Wedding Photography">Candid Wedding Photography
+                                                </option>
+                                                <option value="Pre-Wedding Photoshoot">Pre-Wedding Photoshoot</option>
+                                                <option value="Wedding Cinematography">Wedding Cinematography</option>
+                                                <option value="Destination Wedding">Destination Wedding</option>
+                                                <option value="Other">Other Custom Package</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Fast 1-Click Service Chips -->
+                                        <div class="quick-pills-row" id="serviceQuickPills">
+                                            <button type="button" class="quick-pill"
+                                                data-service="Candid Wedding Photography">✨ Candid Wedding</button>
+                                            <button type="button" class="quick-pill"
+                                                data-service="Pre-Wedding Photoshoot">💍 Pre-Wedding</button>
+                                            <button type="button" class="quick-pill"
+                                                data-service="Wedding Cinematography">🎬 Cinematography</button>
+                                            <button type="button" class="quick-pill"
+                                                data-service="Destination Wedding">🌴 Destination</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-grid">
+                                        <div class="booking-field">
+                                            <label for="weddingDate">Wedding / Event Date</label>
+                                            <div class="input-wrapper has-icon">
+                                                <span class="input-icon">
+                                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                                    </svg>
+                                                </span>
+                                                <input type="date" id="weddingDate" name="weddingDate">
+                                            </div>
+                                        </div>
+
+                                        <div class="booking-field">
+                                            <label for="weddingHour">Event Time (12-Hr) <span
+                                                    class="req">*</span></label>
+
+                                            <div class="event-time-box">
+                                                <span class="time-box-icon">
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <polyline points="12 6 12 12 15 15"></polyline>
+                                                    </svg>
+                                                </span>
+
+                                                <input type="number" id="weddingHour" class="time-select time-hour"
+                                                    placeholder="Hr" min="1" max="12" maxlength="2" aria-label="Hour">
+
+                                                <span class="time-colon">:</span>
+
+                                                <input type="number" id="weddingMinute" class="time-select time-minute"
+                                                    placeholder="Min" min="0" max="59" aria-label="Minute">
+
+                                                <select id="weddingPeriod" class="time-select time-period"
+                                                    aria-label="AM or PM">
+                                                    <option value="AM">AM</option>
+                                                    <option value="PM">PM</option>
+                                                </select>
+
+                                                <!-- Hidden fields synced for Google Sheet columns -->
+                                                <input type="hidden" id="weddingTimeHidden" name="time">
+                                                <input type="hidden" id="weddingTimeAlias" name="weddingTime">
+                                                <input type="hidden" id="eventTimeAlias" name="eventTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-pink btn-step-next" data-next="2">
+                                        <span>Next: Venue & Details</span>
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
 
-                            <button type="submit" class="btn btn-pink booking-submit" id="bookingSubmitBtn">
-                                <span class="submit-label">Submit Enquiry</span>
-                                <svg class="submit-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round" aria-hidden="true">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </button>
+                            <!-- STEP 2: VENUE & VISION -->
+                            <div class="form-step" data-step="2">
+                                <div class="step-header">
+                                    <span class="step-eyebrow">Step 2 of 3</span>
+                                    <h4>Where will the celebration take place?</h4>
+                                </div>
 
-                            <p id="bookingStatus" class="booking-status" role="status" aria-live="polite"></p>
+                                <div class="step-fields">
+                                    <div class="booking-field field-full">
+                                        <label for="weddingLocation">Location / Venue</label>
+                                        <div class="input-wrapper has-icon">
+                                            <span class="input-icon">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                            </span>
+                                            <input type="text" id="weddingLocation" name="location" maxlength="150"
+                                                placeholder="City, resort, or venue (e.g. Chennai, ECR, Bangalore)">
+                                        </div>
+
+                                        <!-- Fast Location Tags -->
+                                        <div class="quick-pills-row" id="locationQuickPills">
+                                            <button type="button" class="quick-pill loc-pill" data-loc="Chennai">📍
+                                                Chennai</button>
+                                            <button type="button" class="quick-pill loc-pill"
+                                                data-loc="ECR / Mahabalipuram">🏖️ ECR / Mahabs</button>
+                                            <button type="button" class="quick-pill loc-pill" data-loc="Bangalore">🏛️
+                                                Bangalore</button>
+                                            <button type="button" class="quick-pill loc-pill"
+                                                data-loc="Destination Wedding">✈️ Destination</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="booking-field field-full">
+                                        <label for="bookingMessage">Vision / Notes (Optional)</label>
+                                        <div class="input-wrapper has-icon">
+                                            <span class="input-icon">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path
+                                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <input type="text" id="bookingMessage" name="message" maxlength="500"
+                                                placeholder="Ceremonies, guest count, flow, or special requests...">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="step-actions split">
+                                    <button type="button" class="btn btn-outline btn-step-prev" data-prev="1">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                                            <polyline points="12 19 5 12 12 5"></polyline>
+                                        </svg>
+                                        <span>Back</span>
+                                    </button>
+                                    <button type="button" class="btn btn-pink btn-step-next" data-next="3">
+                                        <span>Next: Your Details</span>
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- STEP 3: CONTACT DETAILS & SUBMIT -->
+                            <div class="form-step" data-step="3">
+                                <div class="step-header">
+                                    <span class="step-eyebrow">Step 3 of 3</span>
+                                    <h4>Where should we send your quote?</h4>
+                                </div>
+
+                                <!-- Calendly-Style Elevated Booking Summary Ticket -->
+                                <div class="step-summary-ticket" id="stepSummaryPill">
+                                    <div class="summary-ticket-left">
+                                        <div class="summary-ticket-icon">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                            </svg>
+                                        </div>
+                                        <div class="summary-ticket-info">
+                                            <div class="summary-service-title" id="summaryServiceText">Service
+                                                Selected</div>
+                                            <div class="summary-date-sub" id="summaryDateText">Date & Time Selected
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="summary-ticket-edit" id="summaryEditBtn"
+                                        title="Change date or service">
+                                        <span>Edit</span>
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                            </path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="step-fields">
+                                    <div class="booking-field field-full">
+                                        <label for="bookingName">Full Name <span class="req">*</span></label>
+                                        <div class="input-wrapper has-icon">
+                                            <span class="input-icon">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                </svg>
+                                            </span>
+                                            <input type="text" id="bookingName" name="name" maxlength="100"
+                                                autocomplete="name" placeholder="Your full name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-grid">
+                                        <div class="booking-field">
+                                            <label for="bookingPhone">Phone Number <span class="req">*</span></label>
+                                            <div class="input-wrapper has-icon">
+                                                <span class="input-icon">
+                                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path
+                                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                                <input type="tel" id="bookingPhone" name="phone" maxlength="25"
+                                                    autocomplete="tel" pattern="[0-9+() -]{7,25}"
+                                                    placeholder="+91 98407 67566" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="booking-field">
+                                            <label for="bookingEmail">Email Address <span class="req">*</span></label>
+                                            <div class="input-wrapper has-icon">
+                                                <span class="input-icon">
+                                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path
+                                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                                        </path>
+                                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                                    </svg>
+                                                </span>
+                                                <input type="email" id="bookingEmail" name="email" maxlength="150"
+                                                    autocomplete="email" placeholder="name@example.com" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Simple honeypot field to deter basic bots -->
+                                <div class="booking-honeypot" aria-hidden="true">
+                                    <label for="websiteField">Website</label>
+                                    <input type="text" id="websiteField" name="website" tabindex="-1"
+                                        autocomplete="off">
+                                </div>
+
+                                <div class="step-actions split">
+                                    <button type="button" class="btn btn-outline btn-step-prev" data-prev="2">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                                            <polyline points="12 19 5 12 12 5"></polyline>
+                                        </svg>
+                                        <span>Back</span>
+                                    </button>
+                                    <button type="submit" class="btn btn-pink booking-submit" id="bookingSubmitBtn">
+                                        <span class="submit-label">Submit Enquiry</span>
+                                        <svg class="submit-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <p id="bookingStatus" class="booking-status" role="status" aria-live="polite"></p>
+                            </div>
                         </form>
 
                         <!-- Centered Thank You Message & Resubmit Container -->
@@ -880,7 +1161,8 @@
                             </div>
                             <h3 class="booking-success-title">Thank You!</h3>
                             <p class="booking-success-message">
-                                Your enquiry has been received. Our team will contact you within 24 hours.
+                                Your enquiry has been received. Our senior team will contact you with availability and
+                                customized pricing within 24 hours.
                             </p>
                             <button type="button" class="btn btn-pink booking-resubmit-btn" id="bookingResubmitBtn">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
